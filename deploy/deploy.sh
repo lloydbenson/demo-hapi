@@ -17,5 +17,6 @@ mv ${ARTIFACT} app
 cd app
 tar xvfz ${ARTIFACT}
 cd ..
+echo "Starting App"
 app/demo-hapi/bin/start.sh
 exit 0
