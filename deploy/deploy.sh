@@ -22,7 +22,7 @@ cd app/demo-hapi
 bin/start.sh
 echo "Checking Startup"
 sleep 5
-if [ $(ps auxww | grep node | grep index.js | wc -l ) ];
+if [ $(ps auxww | grep node | grep index.js | wc -l) -eq 0 ];
 then
    echo "Failed to start due to the following:"
    tail -10 demo-hapi.log
