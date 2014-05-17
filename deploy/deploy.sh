@@ -6,7 +6,7 @@ ARTIFACT=$(curl -s "http://localhost:8080/job/demo.build/lastSuccessfulBuild/api
 curl -s -L -O http://localhost:8080/job/demo.build/lastSuccessfulBuild/artifact/${ARTIFACT}
 echo "Copying ${ARTIFACT} for last successful run"
 echo "Cleaning up last backup"
-rm -rf prev-app-*
+rm -rf prev-app
 echo "Stopping App"
 app/demo-hapi/bin/stop.sh
 echo "Backup App"
