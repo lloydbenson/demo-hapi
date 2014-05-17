@@ -2,7 +2,7 @@
 
 echo "Building hapi demo"
 echo "Cleanup"
-rm -f hapidemo*.tar.gz
+rm -f *.tar.gz
 rm -rf node_modules
 echo "Testing"
 npm install
