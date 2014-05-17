@@ -19,4 +19,12 @@ tar xvfz ${ARTIFACT}
 cd ..
 echo "Starting App"
 app/demo-hapi/bin/start.sh
+echo "Checking Startup"
+sleep 5
+if [ $(ps auxww | grep node | grep index.js | wc -l ) ];
+then
+   echo "Failed to start due to the following:"
+   tail -10 demo-hapi.log
+   exit 2
+fi
 exit 0
