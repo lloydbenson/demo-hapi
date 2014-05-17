@@ -14,6 +14,8 @@ mv app prev-app
 echo "Deploying App"
 mkdir app
 mv ${ARTIFACT} app
+cd app
 tar xvfz ${ARTIFACT}
+cd ..
 app/demo-hapi/bin/start.sh
 exit 0
