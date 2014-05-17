@@ -1,9 +1,9 @@
 #!/bin/bash
 
 DATE=$(date +%YYMMDDHHMM)
-BUILD_PATH="../demo.build/lastSuccessful/archive"
-cd ${BUILD_PATH}
-ARTIFACT=$(ls *.tar.gz)
+echo "Download last successful artifact"
+ARTIFACT=$(curl -s "http://localhost:8080/job/demo.build/lastSuccessfulBuild/api/json?pretty=true" | grep fileName | awk '{print $3}' | awk -F\" '{print $2}')
+curl -s -L -O http://localhost:8080/job/demo.build/lastSuccessfulBuild/artifact/${ARTIFACT}
 echo "Copying ${ARTIFACT} for last successful run"
 cp ${BUILD_PATH}/${ARTIFACT} .
 echo "Cleaning up last backup"
