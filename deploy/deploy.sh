@@ -18,7 +18,8 @@ cd app
 tar xvfz ${ARTIFACT}
 cd ..
 echo "Starting App"
-app/demo-hapi/bin/start.sh
+cd app/demo-hapi
+bin/start.sh
 echo "Checking Startup"
 sleep 5
 if [ $(ps auxww | grep node | grep index.js | wc -l ) ];
