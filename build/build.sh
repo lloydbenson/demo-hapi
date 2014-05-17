@@ -11,5 +11,5 @@ rm -rf node_modules
 echo "Final install"
 npm install --production
 npm shrinkwrap
-VERSION=$(shasum npm-shrinkwrap.json | awk '{print $1}' | cut -c 1-7)
+VERSION=$(sha1sum npm-shrinkwrap.json | awk '{print $1}' | cut -c 1-7)
 tar cvfz demo-hapi-${VERSION}.tar.gz lib index.js package.json npm-shrinkwrap.json node_modules bin
