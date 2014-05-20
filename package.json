@@ -1,13 +1,13 @@
 {
-  "name": "hapi-examples",
-  "version": "0.0.1",
-  "description": "hapi examples",
+  "name": "demo-hapi",
+  "version": "0.0.2",
+  "description": "demo for hapi",
   "main": "index.js",
   "author": "Lloyd Benson",
   "license": "BSD",
   "dependencies": {
     "async": "0.8.x",
-    "hapi": "4.x.x",
+    "hapi": "5.x.x",
     "hapi-examples": "git+ssh://git@github.com:lloydbenson/hapi-examples",
     "joi": "4.x.x",
     "hoek": "2.x.x",
