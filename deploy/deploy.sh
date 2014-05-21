@@ -22,6 +22,7 @@ echo "Copying ${ARTIFACT} for last successful run"
 echo "Cleaning up last backup"
 rm -rf prev-app
 echo "Stopping App"
+pwd
 app/demo-hapi/bin/stop.sh
 echo "Backup App"
 mv app prev-app 
@@ -32,8 +33,11 @@ cd app
 tar xvfz ${ARTIFACT}
 cd ..
 echo "Starting App"
+pwd
 cd app/demo-hapi
+pwd
 bin/start.sh
+pwd
 echo "Checking Startup"
 sleep 5
 if [ $(ps auxww | grep node | grep index.js | wc -l) -eq 0 ];
