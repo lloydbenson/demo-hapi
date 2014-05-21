@@ -16,10 +16,12 @@ rm -f demo-hapi.log
 
 echo "Checking Startup"
 sleep 5
-if [ $(ps auxww | grep node | grep index.js | wc -l) -eq 0 ];
+if [ $(ps auxww | grep node | grep index | wc -l) -eq 0 ];
 then
    echo "Failed to start due to the following:"
    tail -50 demo-hapi.log
    exit 2
+else
+   ps auxww | grep node | grep index
 fi
 exit 0
