@@ -1,5 +1,18 @@
 #!/bin/bash
 
+echo "Checking if node is installed"
+## checking node version
+if [ -e ~/.nvm/nvm.sh ];
+then
+   source ~/.nvm/nvm.sh
+fi
+node --version
+if [ $? -ne 0 ];
+then
+  echo "node is not installed.  Try https://github.com/creationix/nvm"
+  exit 2
+fi
+
 DATE=$(date +%YYMMDDHHMM)
 PORT=8081
 echo "Download last successful artifact"
