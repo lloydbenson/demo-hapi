@@ -9,5 +9,6 @@ then
   echo "node is not installed.  Try https://github.com/creationix/nvm"
   exit 2
 fi
+cd app/demo-hapi
 rm -f demo-hapi.log
 nohup node index.js > demo-hapi.log 2>&1 &
