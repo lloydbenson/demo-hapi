@@ -16,9 +16,6 @@ fi
 DATE=$(date +%YYMMDDHHMM)
 PORT=8081
 
-echo "Go to app dir"
-cd app/demo-hapi
-
 echo "Download last successful artifact"
 ARTIFACT=$(curl -s "http://localhost:${PORT}/job/demo.build/lastSuccessfulBuild/api/json?pretty=true" | grep fileName | awk '{print $3}' | awk -F\" '{print $2}')
 curl -s -L -O http://localhost:${PORT}/job/demo.build/lastSuccessfulBuild/artifact/${ARTIFACT}
@@ -26,7 +23,9 @@ echo "Copying ${ARTIFACT} for last successful run"
 echo "Cleaning up last backup"
 rm -rf prev-app
 echo "Stopping App"
+cd app/demo-hapi
 bin/stop.sh
+cd ../..
 echo "Backup App"
 mv app prev-app 
 echo "Deploying App"
@@ -34,7 +33,7 @@ mkdir app
 mv ${ARTIFACT} app
 cd app
 tar xvfz ${ARTIFACT}
-cd ..
+cd demo-hapi
 echo "Starting App"
 bin/start.sh
 echo "Checking Startup"
@@ -42,7 +41,7 @@ sleep 5
 if [ $(ps auxww | grep node | grep index.js | wc -l) -eq 0 ];
 then
    echo "Failed to start due to the following:"
-   tail -10 demo-hapi.log
+   tail -50 demo-hapi.log
    exit 2
 fi
 exit 0
