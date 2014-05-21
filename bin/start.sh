@@ -24,4 +24,3 @@ then
 else
    ps auxww | grep node | grep index
 fi
-exit 0
