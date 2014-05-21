@@ -12,7 +12,7 @@ then
 fi
 
 rm -f demo-hapi.log
-/usr/bin/nohup node index.js > demo-hapi.log 2>&1 &
+node index.js > demo-hapi.log 2>&1
 
 echo "Checking Startup"
 sleep 5
