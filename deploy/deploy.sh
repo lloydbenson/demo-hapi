@@ -23,9 +23,7 @@ echo "Copying ${ARTIFACT} for last successful run"
 echo "Cleaning up last backup"
 rm -rf prev-app
 echo "Stopping App"
-cd app/demo-hapi
-bin/stop.sh
-cd ../..
+app/demo-hapi/bin/stop.sh
 echo "Backup App"
 mv app prev-app 
 echo "Deploying App"
