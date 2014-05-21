@@ -33,4 +33,4 @@ cd app
 tar xvfz ${ARTIFACT}
 cd demo-hapi
 echo "Starting App"
-nohup bin/start.sh &
+bin/start.sh
