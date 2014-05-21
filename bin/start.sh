@@ -10,8 +10,9 @@ then
   echo "node is not installed.  Try https://github.com/creationix/nvm"
   exit 2
 fi
+
 rm -f demo-hapi.log
-nohup node index.js > demo-hapi.log 2>&1 &
+/usr/bin/nohup node index.js > demo-hapi.log 2>&1 &
 
 echo "Checking Startup"
 sleep 5
