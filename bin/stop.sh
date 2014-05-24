@@ -6,6 +6,6 @@ then
    echo "This doesnt seem to be running anyway"
    exit 0
 else
-   echo "Killing PID"
+   echo "Killing PID ${THE_PID}"
    /bin/kill ${THE_PID}
 fi
