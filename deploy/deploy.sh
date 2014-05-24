@@ -22,8 +22,6 @@ curl -s -L -O http://localhost:${PORT}/job/demo.build/lastSuccessfulBuild/artifa
 echo "Copying ${ARTIFACT} for last successful run"
 echo "Cleaning up last backup"
 rm -rf prev-app
-echo "Stopping App"
-app/demo-hapi/bin/stop.sh
 echo "Backup App"
 mv app prev-app 
 echo "Deploying App"
@@ -31,6 +29,3 @@ mkdir app
 mv ${ARTIFACT} app
 cd app
 tar xvfz ${ARTIFACT}
-cd demo-hapi
-echo "Starting App"
-bin/start.sh
