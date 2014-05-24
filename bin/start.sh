@@ -14,7 +14,7 @@ fi
 rm -f demo-hapi.log
 nohup node index.js > demo-hapi.log 2>&1 &
 
-if [ $(uname -s} == "Darwin" ];
+if [ $(uname -s) == "Darwin" ];
 then
    ## on a mac this process gets killed on jenkins cleanup so to show that it works
    ## i am going to start an infinite loop to keep it up.  you need to abort the jenkins job
@@ -24,16 +24,15 @@ then
       echo "."
       sleep 5
    done
-   
-fi
-
-echo "Checking Startup"
-sleep 5
-if [ $(ps auxww | grep node | grep index | wc -l) -eq 0 ];
-then
-   echo "Failed to start due to the following:"
-   tail -50 demo-hapi.log
-   exit 2
 else
-   ps auxww | grep node | grep index
+   echo "Checking Startup"
+   sleep 5
+   if [ $(ps auxww | grep node | grep index | wc -l) -eq 0 ];
+   then
+      echo "Failed to start due to the following:"
+      tail -50 demo-hapi.log
+      exit 2
+   else
+      ps auxww | grep node | grep index
+   fi
 fi
