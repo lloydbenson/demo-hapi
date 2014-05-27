@@ -21,7 +21,7 @@ then
    echo "Keeping thread alive for demo purposes.  Please abort when done to take down server"
    while true
    do
-      echo "."
+      echo -n "."
       sleep 5
    done
 else
