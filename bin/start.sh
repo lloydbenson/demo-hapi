@@ -4,6 +4,8 @@ if [ -e ~/.nvm/nvm.sh ];
 then
    source ~/.nvm/nvm.sh
 fi
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 node --version
 if [ $? -ne 0 ];
 then
@@ -14,8 +16,8 @@ fi
 rm -f demo-hapi.log
 nohup node index.js > demo-hapi.log 2>&1 &
 
-if [ $(uname -s) == "Darwin" ];
-then
+#if [ $(uname -s) == "Darwin" ];
+#then
    ## on a mac this process gets killed on jenkins cleanup so to show that it works
    ## i am going to start an infinite loop to keep it up.  you need to abort the jenkins job
    echo "Keeping thread alive for demo purposes.  Please abort when done to take down server"
@@ -24,7 +26,7 @@ then
       echo -n "."
       sleep 5
    done
-else
+#else
    echo "Checking Startup"
    sleep 5
    if [ $(ps auxww | grep node | grep index | wc -l) -eq 0 ];
@@ -35,4 +37,4 @@ else
    else
       ps auxww | grep node | grep index
    fi
-fi
+#fi
